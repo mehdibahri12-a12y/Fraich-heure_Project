@@ -6,6 +6,8 @@ import Register from './pages/Register';
 import './App.css';
 import Products from './pages/Products';
 import { Link } from 'react-router-dom';
+import ProductDetail from './pages/ProductDetail';
+
 
 
 
@@ -64,6 +66,11 @@ function App() {
           <Route path="/products" element={
             <ProtectedRoute>
               <Products />
+            </ProtectedRoute>
+          } />
+          <Route path="/product/:id" element={
+            <ProtectedRoute>
+              <ProductDetail />
             </ProtectedRoute>
           } />
         </Routes>
