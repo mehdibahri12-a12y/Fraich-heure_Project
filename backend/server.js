@@ -15,9 +15,13 @@ app.use(express.urlencoded({ extended: true })); // for parsing form data
 
 // Import routes
 const authRoutes = require('./routes/authRoutes');
+const productRoutes = require('./routes/productRoutes'); // ADD THIS
+
 
 // Use routes
 app.use('/api/auth', authRoutes);
+app.use('/api/products', productRoutes); // ADD THIS
+
 
 // Basic route (keep this at the end)
 app.get('/', (req, res) => {

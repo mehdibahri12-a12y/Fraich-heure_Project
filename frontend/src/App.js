@@ -4,19 +4,23 @@ import { useAuth } from './context/AuthContext';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import './App.css';
+import Products from './pages/Products';
+import { Link } from 'react-router-dom';
+
+
 
 // Protected route component
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuth();
-  
+
   if (loading) {
     return <div>Loading...</div>;
   }
-  
+
   if (!user) {
     return <Navigate to="/login" />;
   }
-  
+
   return children;
 };
 
@@ -31,6 +35,7 @@ function App() {
           <div className="nav-brand">Organic Store</div>
           <div className="nav-links">
             <a href="/">Home</a>
+            <Link to="/products">Products</Link>
             {user ? (
               <>
                 <span>Welcome, {user.name}!</span>
@@ -54,6 +59,11 @@ function App() {
                 <h1>Welcome to Organic Store</h1>
                 <p>Your trusted source for organic products</p>
               </div>
+            </ProtectedRoute>
+          } />
+          <Route path="/products" element={
+            <ProtectedRoute>
+              <Products />
             </ProtectedRoute>
           } />
         </Routes>
