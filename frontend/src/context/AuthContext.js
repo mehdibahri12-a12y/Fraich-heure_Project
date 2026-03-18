@@ -1,0 +1,86 @@
+import React, { createContext, useState, useContext, useEffect } from 'react';
+import axios from 'axios';
+
+const AuthContext = createContext();
+
+export const useAuth = () => useContext(AuthContext);
+
+export const AuthProvider = ({ children }) => {
+    const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [token, setToken] = useState(localStorage.getItem('token'));
+
+    // Set axios default header
+    if (token) {
+        axios.defaults.headers.common['x-auth-token'] = token;
+    }
+
+    useEffect(() => {
+        if (token) {
+            loadUser();
+        } else {
+            setLoading(false);
+        }
+    }, []);
+
+    const loadUser = async () => {
+        try {
+            const res = await axios.get('http://localhost:5000/api/auth/me');
+            setUser(res.data);
+        } catch (err) {
+            console.error(err);
+            localStorage.removeItem('token');
+            setToken(null);
+            delete axios.defaults.headers.common['x-auth-token'];
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const register = async (formData) => {
+        try {
+            const res = await axios.post('http://localhost:5000/api/auth/register', formData);
+            localStorage.setItem('token', res.data.token);
+            axios.defaults.headers.common['x-auth-token'] = res.data.token;
+            setToken(res.data.token);
+            setUser(res.data.user);
+            return { success: true };
+        } catch (err) {
+            return { success: false, message: err.response.data.message };
+        }
+    };
+
+    const login = async (email, password) => {
+        try {
+            const res = await axios.post('http://localhost:5000/api/auth/login', { email, password });
+            localStorage.setItem('token', res.data.token);
+            axios.defaults.headers.common['x-auth-token'] = res.data.token;
+            setToken(res.data.token);
+            setUser(res.data.user);
+            return { success: true };
+        } catch (err) {
+            return { success: false, message: err.response.data.message };
+        }
+    };
+
+    const logout = () => {
+        localStorage.removeItem('token');
+        delete axios.defaults.headers.common['x-auth-token'];
+        setToken(null);
+        setUser(null);
+    };
+
+    const value = {
+        user,
+        loading,
+        register,
+        login,
+        logout
+    };
+
+    return (
+        <AuthContext.Provider value={value}>
+            {children}
+        </AuthContext.Provider>
+    );
+};

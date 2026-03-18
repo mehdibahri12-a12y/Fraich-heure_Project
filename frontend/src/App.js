@@ -1,28 +1,64 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { useAuth } from './context/AuthContext';
+import Login from './pages/Login';
+import Register from './pages/Register';
 import './App.css';
 
-function App() {
-  const [message, setMessage] = useState('');
+// Protected route component
+const ProtectedRoute = ({ children }) => {
+  const { user, loading } = useAuth();
+  
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  
+  if (!user) {
+    return <Navigate to="/login" />;
+  }
+  
+  return children;
+};
 
-  useEffect(() => {
-    // Test API call
-    axios.get('http://localhost:5000/')
-      .then(response => {
-        setMessage(response.data.message);
-      })
-      .catch(error => {
-        console.error('API Error:', error);
-      });
-  }, []);
+function App() {
+  const { user, logout } = useAuth();
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Organic Store</h1>
-        <p>Backend says: {message || 'Loading...'}</p>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        {/* Simple navigation */}
+        <nav className="main-nav">
+          <div className="nav-brand">Organic Store</div>
+          <div className="nav-links">
+            <a href="/">Home</a>
+            {user ? (
+              <>
+                <span>Welcome, {user.name}!</span>
+                <button onClick={logout} className="logout-btn">Logout</button>
+              </>
+            ) : (
+              <>
+                <a href="/login">Login</a>
+                <a href="/register">Register</a>
+              </>
+            )}
+          </div>
+        </nav>
+
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/" element={
+            <ProtectedRoute>
+              <div className="home-content">
+                <h1>Welcome to Organic Store</h1>
+                <p>Your trusted source for organic products</p>
+              </div>
+            </ProtectedRoute>
+          } />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

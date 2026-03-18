@@ -13,9 +13,15 @@ app.use(cors());
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing form data
 
-// Basic route for testing
+// Import routes
+const authRoutes = require('./routes/authRoutes');
+
+// Use routes
+app.use('/api/auth', authRoutes);
+
+// Basic route (keep this at the end)
 app.get('/', (req, res) => {
-    res.json({ message: 'Welcome to Organic Store API' });
+  res.json({ message: 'Welcome to Organic Store API' });
 });
 
 // Connect to MongoDB
