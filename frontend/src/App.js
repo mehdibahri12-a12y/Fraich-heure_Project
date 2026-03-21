@@ -7,6 +7,7 @@ import Products from './pages/Products';
 import ProductDetail from './pages/ProductDetail';
 import Cart from './pages/Cart';
 import Nav from './components/Nav';
+import WeeklyMarket from './pages/WeeklyMarket';
 import './App.css';
 
 
@@ -60,6 +61,11 @@ function App() {
           <Route path="/cart" element={
             <ProtectedRoute>
               <Cart />
+            </ProtectedRoute>
+          } />
+          <Route path="/weekly-market" element={
+            <ProtectedRoute>
+              <WeeklyMarket />
             </ProtectedRoute>
           } />
         </Routes>

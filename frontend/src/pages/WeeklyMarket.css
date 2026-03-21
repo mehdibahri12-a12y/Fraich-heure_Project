@@ -1,0 +1,202 @@
+.weekly-market {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.weekly-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.weekly-header h1 {
+    color: #2e7d32;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.weekly-header p {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.week-badge {
+    display: inline-block;
+    background: #e8f5e9;
+    color: #2e7d32;
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.category-tabs {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.category-tab {
+    padding: 0.6rem 1.2rem;
+    background: white;
+    border: 1px solid #2e7d32;
+    color: #2e7d32;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+}
+
+.category-tab:hover {
+    background: #e8f5e9;
+}
+
+.category-tab.active {
+    background: #2e7d32;
+    color: white;
+}
+
+.weekly-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.weekly-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.weekly-card:hover {
+    transform: translateY(-5px);
+}
+
+.weekly-card-image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+    background: #f5f5f5;
+}
+
+.weekly-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.farmer-badge {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+.weekly-card-content {
+    padding: 1.5rem;
+}
+
+.weekly-category {
+    color: #2e7d32;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.weekly-card-content h3 {
+    margin: 0 0 0.5rem 0;
+    color: #333;
+    font-size: 1.2rem;
+}
+
+.weekly-price {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #2e7d32;
+    margin-bottom: 0.5rem;
+}
+
+.weekly-price span {
+    font-size: 0.9rem;
+    color: #666;
+    font-weight: normal;
+}
+
+.weekly-description {
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin: 0.5rem 0;
+}
+
+.farmer-location {
+    color: #888;
+    font-size: 0.8rem;
+    margin: 0.5rem 0;
+}
+
+.weekly-stock {
+    margin: 1rem 0;
+}
+
+.add-weekly-btn {
+    width: 100%;
+    background: #2e7d32;
+    color: white;
+    border: none;
+    padding: 0.8rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.add-weekly-btn:hover:not(:disabled) {
+    background: #1b5e20;
+}
+
+.add-weekly-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.weekly-loading,
+.weekly-error,
+.no-weekly-products {
+    text-align: center;
+    padding: 4rem;
+    color: #666;
+}
+
+.no-weekly-products p {
+    margin-bottom: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .weekly-market {
+        padding: 1rem;
+    }
+
+    .weekly-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .category-tabs {
+        gap: 0.3rem;
+    }
+
+    .category-tab {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+}

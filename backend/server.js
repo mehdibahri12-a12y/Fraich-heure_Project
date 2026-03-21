@@ -16,11 +16,15 @@ app.use(express.urlencoded({ extended: true })); // for parsing form data
 // Import routes
 const authRoutes = require('./routes/authRoutes');
 const productRoutes = require('./routes/productRoutes'); // ADD THIS
+const weeklyProductRoutes = require('./routes/weeklyProductRoutes');
+
 
 
 // Use routes
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes); // ADD THIS
+app.use('/api/weekly', weeklyProductRoutes); // ADD THIS
+
 
 
 // Basic route (keep this at the end)

@@ -18,6 +18,7 @@ const Nav = () => {
             <div className="nav-links">
                 <Link to="/">Home</Link>
                 <Link to="/products">Products</Link>
+                <Link to="/weekly-market">Weekly Market</Link>
                 <Link to="/cart" className="cart-link">
                     🛒 Cart {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
                 </Link>
