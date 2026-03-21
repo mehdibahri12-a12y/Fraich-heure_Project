@@ -33,6 +33,7 @@ const Nav = () => {
                         <Link to="/register">Register</Link>
                     </>
                 )}
+                <Link to="/orders">My Orders</Link>
             </div>
         </nav>
     );

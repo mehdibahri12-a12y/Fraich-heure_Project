@@ -8,6 +8,10 @@ import ProductDetail from './pages/ProductDetail';
 import Cart from './pages/Cart';
 import Nav from './components/Nav';
 import WeeklyMarket from './pages/WeeklyMarket';
+import Checkout from './pages/Checkout';
+import OrderConfirmation from './pages/OrderConfirmation';
+import Orders from './pages/Orders';
+
 import './App.css';
 
 
@@ -66,6 +70,21 @@ function App() {
           <Route path="/weekly-market" element={
             <ProtectedRoute>
               <WeeklyMarket />
+            </ProtectedRoute>
+          } />
+          <Route path="/checkout" element={
+            <ProtectedRoute>
+              <Checkout />
+            </ProtectedRoute>
+          } />
+          <Route path="/order-confirmation/:id" element={
+            <ProtectedRoute>
+              <OrderConfirmation />
+            </ProtectedRoute>
+          } />
+          <Route path="/orders" element={
+            <ProtectedRoute>
+              <Orders />
             </ProtectedRoute>
           } />
         </Routes>

@@ -1,10 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import { useNavigate } from 'react-router-dom'; // Add this import
 import './Cart.css';
 
 const Cart = () => {
     const { cartItems, cartTotal, removeFromCart, updateQuantity, clearCart } = useCart();
+
+    const navigate = useNavigate();
 
     if (cartItems.length === 0) {
         return (
@@ -79,7 +82,10 @@ const Cart = () => {
                         <strong>${cartTotal.toFixed(2)}</strong>
                     </div>
 
-                    <button className="checkout-btn">
+                    <button
+                        className="checkout-btn"
+                        onClick={() => navigate('/checkout')}
+                    >
                         Proceed to Checkout
                     </button>
 

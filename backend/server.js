@@ -17,6 +17,8 @@ app.use(express.urlencoded({ extended: true })); // for parsing form data
 const authRoutes = require('./routes/authRoutes');
 const productRoutes = require('./routes/productRoutes'); // ADD THIS
 const weeklyProductRoutes = require('./routes/weeklyProductRoutes');
+const orderRoutes = require('./routes/orderRoutes');
+
 
 
 
@@ -24,6 +26,8 @@ const weeklyProductRoutes = require('./routes/weeklyProductRoutes');
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes); // ADD THIS
 app.use('/api/weekly', weeklyProductRoutes); // ADD THIS
+app.use('/api/orders', orderRoutes);
+
 
 
 
