@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { productService } from '../services/productService';
 import './ProductDetail.css';
+import { useCart } from '../context/CartContext';
 
 const ProductDetail = () => {
     const { id } = useParams(); // Gets the product ID from URL
@@ -9,6 +10,7 @@ const ProductDetail = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [quantity, setQuantity] = useState(1);
+    const { addToCart } = useCart();
 
     useEffect(() => {
         fetchProduct();
@@ -34,7 +36,7 @@ const ProductDetail = () => {
     };
 
     const handleAddToCart = () => {
-        // We'll implement this later when we build the cart
+        addToCart(product, quantity);
         alert(`Added ${quantity} × ${product.name} to cart!`);
     };
 

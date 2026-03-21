@@ -3,10 +3,11 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { useAuth } from './context/AuthContext';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import './App.css';
 import Products from './pages/Products';
-import { Link } from 'react-router-dom';
 import ProductDetail from './pages/ProductDetail';
+import Cart from './pages/Cart';
+import Nav from './components/Nav';
+import './App.css';
 
 
 
@@ -32,25 +33,8 @@ function App() {
   return (
     <Router>
       <div className="App">
-        {/* Simple navigation */}
-        <nav className="main-nav">
-          <div className="nav-brand">Organic Store</div>
-          <div className="nav-links">
-            <a href="/">Home</a>
-            <Link to="/products">Products</Link>
-            {user ? (
-              <>
-                <span>Welcome, {user.name}!</span>
-                <button onClick={logout} className="logout-btn">Logout</button>
-              </>
-            ) : (
-              <>
-                <a href="/login">Login</a>
-                <a href="/register">Register</a>
-              </>
-            )}
-          </div>
-        </nav>
+        <Nav />
+
 
         <Routes>
           <Route path="/login" element={<Login />} />
@@ -71,6 +55,11 @@ function App() {
           <Route path="/product/:id" element={
             <ProtectedRoute>
               <ProductDetail />
+            </ProtectedRoute>
+          } />
+          <Route path="/cart" element={
+            <ProtectedRoute>
+              <Cart />
             </ProtectedRoute>
           } />
         </Routes>
