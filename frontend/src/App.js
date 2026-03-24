@@ -12,6 +12,8 @@ import Checkout from './pages/Checkout';
 import OrderConfirmation from './pages/OrderConfirmation';
 import Orders from './pages/Orders';
 import ProtectedRoute from './components/ProtectedRoute';
+import Home from './pages/Home';
+
 
 import './App.css';
 
@@ -45,12 +47,8 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/" element={
-              <div className="home-content">
-                <h1>Welcome to Organic Store</h1>
-                <p>Your trusted source for organic products</p>
-              </div>
-          } />
+          <Route path="/" element={<Home />} />
+
           <Route path="/products" element={
             <ProtectedRoute>
               <Products />
