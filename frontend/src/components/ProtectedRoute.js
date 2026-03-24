@@ -33,7 +33,7 @@ const ProtectedRoute = ({ children }) => {
                         <a href="/register" className="message-register-btn">Create Account</a>
                     </div>
                     <p className="message-note">
-                        New to organic? Join us and discover fresh, natural products from local farmers.
+                        New to organic? <br/> Join us and discover fresh, natural products from local farmers.
                     </p>
                 </div>
             </motion.div>
