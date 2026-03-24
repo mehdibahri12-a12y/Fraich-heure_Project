@@ -150,20 +150,24 @@
 }
 
 .feature-icon {
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(135deg, var(--primary-green) 0%, var(--accent-gold) 100%);
-    border-radius: var(--radius-xl);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 1.5rem;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--primary-green) 0%, var(--accent-gold) 100%);
+  border-radius: var(--radius-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
 }
 
 .feature-icon svg {
-    width: 30px;
-    height: 30px;
-    color: white;
+  width: 32px;
+  height: 32px;
+  color: white;
+}
+
+.feature-icon span {
+  font-size: 2rem;
 }
 
 .feature-card h3 {

@@ -187,7 +187,7 @@ const WeeklyMarket = () => {
                                                 animate={{ scale: 1 }}
                                                 exit={{ scale: 0 }}
                                             >
-                                                <ShoppingBagIcon /> Add to Weekly Basket
+                                                <ShoppingBagIcon />&nbsp; Add to Weekly Basket
                                             </motion.span>
                                         )}
                                     </AnimatePresence>
