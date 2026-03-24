@@ -11,6 +11,7 @@ import WeeklyMarket from './pages/WeeklyMarket';
 import Checkout from './pages/Checkout';
 import OrderConfirmation from './pages/OrderConfirmation';
 import Orders from './pages/Orders';
+import ProtectedRoute from './components/ProtectedRoute';
 
 import './App.css';
 
@@ -18,19 +19,19 @@ import './App.css';
 
 
 // Protected route component
-const ProtectedRoute = ({ children }) => {
-  const { user, loading } = useAuth();
+// const ProtectedRoute = ({ children }) => {
+//   const { user, loading } = useAuth();
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+//   if (loading) {
+//     return <div>Loading...</div>;
+//   }
 
-  if (!user) {
-    return <Navigate to="/login" />;
-  }
+//   if (!user) {
+//     return <Navigate to="/login" />;
+//   }
 
-  return children;
-};
+//   return children;
+// };
 
 function App() {
   const { user, logout } = useAuth();
@@ -45,12 +46,10 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/" element={
-            <ProtectedRoute>
               <div className="home-content">
                 <h1>Welcome to Organic Store</h1>
                 <p>Your trusted source for organic products</p>
               </div>
-            </ProtectedRoute>
           } />
           <Route path="/products" element={
             <ProtectedRoute>

@@ -1,0 +1,103 @@
+.protected-message {
+    min-height: calc(100vh - 200px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, var(--bg-warm) 0%, var(--warm-cream) 100%);
+}
+
+.message-card {
+    max-width: 500px;
+    text-align: center;
+    padding: 3rem;
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+}
+
+.message-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.message-card h2 {
+    color: var(--primary-green);
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+}
+
+.message-card p {
+    color: var(--text-medium);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.message-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.message-login-btn,
+.message-register-btn {
+    padding: 0.8rem 1.8rem;
+    border-radius: var(--radius-xl);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all var(--transition-fast);
+}
+
+.message-login-btn {
+    background: transparent;
+    border: 2px solid var(--primary-green);
+    color: var(--primary-green);
+}
+
+.message-login-btn:hover {
+    background: var(--primary-green);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.message-register-btn {
+    background: var(--primary-green);
+    color: white;
+    border: 2px solid var(--primary-green);
+}
+
+.message-register-btn:hover {
+    background: var(--primary-green-dark);
+    transform: translateY(-2px);
+}
+
+.message-note {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-top: 1rem;
+}
+
+.protected-loading {
+    min-height: calc(100vh - 200px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--warm-beige);
+    border-top-color: var(--primary-green);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
