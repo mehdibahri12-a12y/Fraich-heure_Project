@@ -30,7 +30,7 @@ const Home = () => {
                         transition={{ duration: 0.6 }}
                     >
                         <span className="hero-badge">Welcome to</span>
-                        <h1>Food-Health-Care</h1>
+                        <h1>Fraich'heure</h1>
                         <p>Your trusted source for organic goodness, straight from nature's heart to your table.</p>
                         <div className="hero-buttons">
                             <Link to="/products" className="hero-btn-primary">Shop Now</Link>
