@@ -9,7 +9,7 @@ const {
     updateProduct,
     deleteProduct
 } = require('../controllers/productController');
-const auth = require('../middleware/Auth');
+const auth = require('../middleware/auth');
 
 // Public routes
 router.get('/', getAllProducts);

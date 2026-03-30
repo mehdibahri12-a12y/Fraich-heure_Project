@@ -9,7 +9,10 @@ dotenv.config();
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:3000', 'https://mern-final-project-mpnd738dv-mehdibahri12-a12ys-projects.vercel.app/'],
+  credentials: true
+}));
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing form data
 
