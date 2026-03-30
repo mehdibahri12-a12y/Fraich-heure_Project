@@ -8,15 +8,22 @@ dotenv.config();
 
 const app = express();
 
-// Middleware
+// Allow both localhost and your Vercel frontend
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://mern-final-project-tawny.vercel.app',
+  'https://mern-final-project-mpnd738dv-mehdibahri12-a12ys-projects.vercel.app'
+];
+
 app.use(cors({
-  origin: function (origin, callback) {
-    // Allow localhost and any vercel.app domain
-    if (!origin ||
-      origin.includes('localhost') ||
-      origin.includes('vercel.app')) {
+  origin: function(origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl)
+    if (!origin) return callback(null, true);
+    
+    if (allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
+      console.log('Blocked origin:', origin);
       callback(new Error('Not allowed by CORS'));
     }
   },
