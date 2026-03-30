@@ -12,7 +12,7 @@
 }
 
 .weekly-hero::before {
-    content: '🌸 🌻 🌼 🌺 🌸 🌻 🌼 🌺';
+    content: "🌸 🌻 🌼 🌺 🌸 🌻 🌼 🌺";
     position: absolute;
     bottom: 0;
     left: 0;
@@ -324,7 +324,7 @@
 .added-confirmation svg {
     width: 18px;
     height: 18px;
-} */
+}
 
 .weekly-loading {
     min-height: 60vh;
