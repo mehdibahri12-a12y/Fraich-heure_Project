@@ -1,22 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { productService } from '../services/productService';
-import './ProductDetail.css';
 import { useCart } from '../context/CartContext';
+import './ProductDetail.css';
 
 const ProductDetail = () => {
-    const { id } = useParams(); // Gets the product ID from URL
+    const { id } = useParams();
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [quantity, setQuantity] = useState(1);
     const { addToCart } = useCart();
 
-    useEffect(() => {
-        fetchProduct();
-    }, [id]);
-
-    const fetchProduct = async () => {
+    const fetchProduct = useCallback(async () => {
         try {
             setLoading(true);
             const data = await productService.getProductById(id);
@@ -26,7 +22,11 @@ const ProductDetail = () => {
         } finally {
             setLoading(false);
         }
-    };
+    }, [id]);
+
+    useEffect(() => {
+        fetchProduct();
+    }, [fetchProduct]);
 
     const handleQuantityChange = (change) => {
         const newQuantity = quantity + change;

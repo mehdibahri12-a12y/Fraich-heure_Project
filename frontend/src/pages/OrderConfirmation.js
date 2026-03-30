@@ -1,22 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import './OrderConfirmation.css';
 
-console.log('OrderConfirmation component file loaded');
-
 const OrderConfirmation = () => {
-    console.log('OrderConfirmation component rendering'); // ADD THIS
     const { id } = useParams();
-    console.log('Order ID from params:', id); // ADD THIS
     const [order, setOrder] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        fetchOrder();
-    }, [id]);
-
-    const fetchOrder = async () => {
+    const fetchOrder = useCallback(async () => {
         try {
             const token = localStorage.getItem('token');
             const response = await axios.get(
@@ -29,7 +21,11 @@ const OrderConfirmation = () => {
         } finally {
             setLoading(false);
         }
-    };
+    }, [id]);
+
+    useEffect(() => {
+        fetchOrder();
+    }, [fetchOrder]);
 
     if (loading) {
         return (
