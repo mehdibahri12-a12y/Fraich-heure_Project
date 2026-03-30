@@ -56,7 +56,7 @@ const Nav = () => {
                             </svg>
                         </div>
                         <div className="logo-text">
-                            <span className="logo-main">FRAICH'HEURE</span>
+                            <span className="logo-main">ORGANIC STORE</span>
                             <span className="logo-tagline">Food · Health · Care</span>
                         </div>
                     </Link>
