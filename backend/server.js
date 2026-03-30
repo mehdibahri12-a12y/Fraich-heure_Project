@@ -10,7 +10,7 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://mern-final-project-mpnd738dv-mehdibahri12-a12ys-projects.vercel.app/'],
+  origin: ['http://localhost:3000', 'https://mern-final-project-mpnd738dv-mehdibahri12-a12ys-projects.vercel.app'],  // ← no trailing slash
   credentials: true
 }));
 app.use(express.json()); // for parsing application/json

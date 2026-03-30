@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = 'https://mern-final-project-n759.onrender.com/api';
 
 export const weeklyProductService = {
     // Get current weekly products
