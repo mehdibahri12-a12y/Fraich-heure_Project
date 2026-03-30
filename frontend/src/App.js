@@ -1,6 +1,4 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { useAuth } from './context/AuthContext';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Products from './pages/Products';
@@ -36,7 +34,6 @@ import './App.css';
 // };
 
 function App() {
-  const { user, logout } = useAuth();
 
   return (
     <Router>
