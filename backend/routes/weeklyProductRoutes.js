@@ -8,8 +8,8 @@ const {
     startNewWeek,
     updateWeeklyProduct,
     deleteWeeklyProduct
-} = require('../controllers/weeklyProductController');
-const auth = require('../middleware/auth');
+} = require('../controllers/weeklyProductController.js');
+const auth = require('../middleware/auth.js');
 
 // Public routes (but protected by auth - customers need to be logged in)
 router.get('/', auth, getCurrentWeeklyProducts);

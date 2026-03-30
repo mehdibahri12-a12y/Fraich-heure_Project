@@ -7,8 +7,8 @@ const {
     cancelOrder,
     updateOrderStatus,
     getAllOrders
-} = require('../controllers/orderController');
-const auth = require('../middleware/auth');
+} = require('../controllers/orderController.js');
+const auth = require('../middleware/auth.js');
 
 // User routes
 router.post('/', auth, createOrder);

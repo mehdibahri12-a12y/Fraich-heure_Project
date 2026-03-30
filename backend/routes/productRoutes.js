@@ -8,9 +8,9 @@ const {
     createProduct,
     updateProduct,
     deleteProduct
-} = require('../controllers/productController');
+} = require('../controllers/productController.js');
 
-const auth = require('../middleware/auth');
+const auth = require('../middleware/auth.js');
 
 // Public routes
 router.get('/', getAllProducts);
