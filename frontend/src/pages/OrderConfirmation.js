@@ -14,7 +14,7 @@ const OrderConfirmation = () => {
 
     useEffect(() => {
         fetchOrder();
-    }, [id, fetchOrder]);
+    }, [id]);
 
     const fetchOrder = async () => {
         try {

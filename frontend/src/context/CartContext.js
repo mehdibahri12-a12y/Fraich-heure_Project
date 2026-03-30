@@ -16,16 +16,18 @@ export const CartProvider = ({ children }) => {
         }
     }, []);
 
+    const calculateTotal = () => {
+        const total = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        setCartTotal(total);
+    };
+    
     // Save cart to localStorage whenever it changes
     useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(cartItems));
         calculateTotal();
     }, [cartItems, calculateTotal]);
 
-    const calculateTotal = () => {
-        const total = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        setCartTotal(total);
-    };
+
 
     // Add item to cart
     const addToCart = (product, quantity) => {
