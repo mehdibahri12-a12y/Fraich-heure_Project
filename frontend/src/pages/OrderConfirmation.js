@@ -12,7 +12,7 @@ const OrderConfirmation = () => {
         try {
             const token = localStorage.getItem('token');
             const response = await axios.get(
-                `http://localhost:5000/api/orders/${id}`,
+                `https://mern-final-project-n759.onrender.com/api/orders/${id}`,
                 { headers: { 'x-auth-token': token } }
             );
             setOrder(response.data);

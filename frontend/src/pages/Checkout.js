@@ -65,7 +65,7 @@ const Checkout = () => {
         try {
             const token = localStorage.getItem('token');
             const response = await axios.post(
-                'http://localhost:5000/api/orders',
+                'https://mern-final-project-n759.onrender.com/api/orders',
                 orderData,
                 { headers: { 'x-auth-token': token } }
             );
