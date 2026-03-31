@@ -1,9 +1,7 @@
 import axios from 'axios';
-
-const API_URL = 'https://mern-final-project-n759.onrender.com/api';
+import { API_URL } from '../config';
 
 export const weeklyProductService = {
-    // Get current weekly products
     getCurrentWeeklyProducts: async () => {
         try {
             const response = await axios.get(`${API_URL}/weekly`);
@@ -12,8 +10,6 @@ export const weeklyProductService = {
             throw error.response?.data || error.message;
         }
     },
-
-    // Get weekly products by category
     getWeeklyProductsByCategory: async (category) => {
         try {
             const response = await axios.get(`${API_URL}/weekly/category/${category}`);

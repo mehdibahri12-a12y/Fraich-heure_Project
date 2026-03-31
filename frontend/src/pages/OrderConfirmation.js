@@ -2,6 +2,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import './OrderConfirmation.css';
+import { API_URL } from '../config';
+
 
 const OrderConfirmation = () => {
     const { id } = useParams();
@@ -12,7 +14,7 @@ const OrderConfirmation = () => {
         try {
             const token = localStorage.getItem('token');
             const response = await axios.get(
-                `https://mern-final-project-n759.onrender.com/api/orders/${id}`,
+                `${API_URL}/orders/${id}`,
                 { headers: { 'x-auth-token': token } }
             );
             setOrder(response.data);

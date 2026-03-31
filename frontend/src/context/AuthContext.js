@@ -1,5 +1,6 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import axios from 'axios';
+import { API_URL } from '../config';
 
 const AuthContext = createContext();
 
@@ -25,7 +26,7 @@ export const AuthProvider = ({ children }) => {
 
     const loadUser = async () => {
         try {
-            const res = await axios.get('https://mern-final-project-n759.onrender.com/api/auth/me');
+            const res = await axios.get(`${API_URL}/auth/me`);
             setUser(res.data);
         } catch (err) {
             console.error(err);
@@ -39,7 +40,7 @@ export const AuthProvider = ({ children }) => {
 
     const register = async (formData) => {
         try {
-            const res = await axios.post('https://mern-final-project-n759.onrender.com/api/auth/register', formData);
+            const res = await axios.post(`${API_URL}/auth/register`, formData);
             localStorage.setItem('token', res.data.token);
             axios.defaults.headers.common['x-auth-token'] = res.data.token;
             setToken(res.data.token);
@@ -52,7 +53,7 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (email, password) => {
         try {
-            const res = await axios.post('https://mern-final-project-n759.onrender.com/api/auth/login', { email, password });
+            const res = await axios.post(`${API_URL}/auth/login`, { email, password });
             localStorage.setItem('token', res.data.token);
             axios.defaults.headers.common['x-auth-token'] = res.data.token;
             setToken(res.data.token);

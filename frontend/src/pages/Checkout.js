@@ -5,6 +5,8 @@ import { useAuth } from '../context/AuthContext';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './Checkout.css';
+import { API_URL } from '../config';
+
 
 const Checkout = () => {
     const { cartItems, cartTotal, clearCart } = useCart();
@@ -65,7 +67,7 @@ const Checkout = () => {
         try {
             const token = localStorage.getItem('token');
             const response = await axios.post(
-                'https://mern-final-project-n759.onrender.com/api/orders',
+                `${API_URL}/orders`,
                 orderData,
                 { headers: { 'x-auth-token': token } }
             );
